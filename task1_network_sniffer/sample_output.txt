@@ -1,0 +1,64 @@
+[*] Reading packets from sample_capture.pcap
+
+[   1] 17:41:32.288  (42 bytes)
+      MAC  : aa:bb:cc:00:00:10 -> ff:ff:ff:ff:ff:ff
+      ARP  : request  192.168.1.10 (aa:bb:cc:00:00:10) -> 192.168.1.1
+
+[   2] 17:41:32.287  (71 bytes)
+      MAC  : aa:bb:cc:00:00:10 -> aa:bb:cc:00:00:01
+      IPv4 : 192.168.1.10 -> 8.8.8.8  | protocol=UDP ttl=64
+      UDP  : 51515 -> 53 (DNS)  len=37
+      DNS  : query for example.com.
+
+[   3] 17:41:32.287  (54 bytes)
+      MAC  : aa:bb:cc:00:00:10 -> aa:bb:cc:00:00:01
+      IPv4 : 192.168.1.10 -> 93.184.216.34  | protocol=TCP ttl=64
+      TCP  : 50000 -> 80 (HTTP)  flags=SYN seq=100 win=8192
+
+[   4] 17:41:32.288  (54 bytes)
+      MAC  : aa:bb:cc:00:00:01 -> aa:bb:cc:00:00:10
+      IPv4 : 93.184.216.34 -> 192.168.1.10  | protocol=TCP ttl=64
+      TCP  : 80 (HTTP) -> 50000  flags=SYN+ACK seq=500 win=8192
+
+[   5] 17:41:32.287  (54 bytes)
+      MAC  : aa:bb:cc:00:00:10 -> aa:bb:cc:00:00:01
+      IPv4 : 192.168.1.10 -> 93.184.216.34  | protocol=TCP ttl=64
+      TCP  : 50000 -> 80 (HTTP)  flags=ACK seq=101 win=8192
+
+[   6] 17:41:32.287  (119 bytes)
+      MAC  : aa:bb:cc:00:00:10 -> aa:bb:cc:00:00:01
+      IPv4 : 192.168.1.10 -> 93.184.216.34  | protocol=TCP ttl=64
+      TCP  : 50000 -> 80 (HTTP)  flags=PSH+ACK seq=101 win=8192
+      HTTP : GET /index.html HTTP/1.1
+      DATA : GET /index.html HTTP/1.1..Host: example.com..User-Agent: demo......
+
+[   7] 17:41:32.288  (116 bytes)
+      MAC  : aa:bb:cc:00:00:01 -> aa:bb:cc:00:00:10
+      IPv4 : 93.184.216.34 -> 192.168.1.10  | protocol=TCP ttl=64
+      TCP  : 80 (HTTP) -> 50000  flags=PSH+ACK seq=501 win=8192
+      HTTP : HTTP/1.1 200 OK
+      DATA : HTTP/1.1 200 OK..Content-Type: text/html....<html>Hello</html>
+
+[   8] 17:41:32.287  (61 bytes)
+      MAC  : aa:bb:cc:00:00:10 -> aa:bb:cc:00:00:01
+      IPv4 : 192.168.1.10 -> 93.184.216.34  | protocol=TCP ttl=64
+      TCP  : 50001 -> 443 (HTTPS)  flags=PSH+ACK seq=0 win=8192
+      TLS  : encrypted payload (not readable)
+      DATA : .......
+
+[   9] 17:41:32.287  (50 bytes)
+      MAC  : aa:bb:cc:00:00:10 -> aa:bb:cc:00:00:01
+      IPv4 : 192.168.1.10 -> 8.8.8.8  | protocol=ICMP ttl=64
+      ICMP : type=8 code=0
+      DATA : abcdefgh
+
+==================================================
+CAPTURE SUMMARY
+==================================================
+Total packets : 9
+TCP           : 6
+UDP           : 1
+ICMP          : 1
+ARP           : 1
+DNS           : 1
+HTTP          : 2
